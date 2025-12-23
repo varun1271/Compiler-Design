@@ -1,0 +1,19 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}   { printf("valid email address\n"); }
+\n                                               { /* ignore newline */ }
+.+                                               { printf("invalid email address\n"); }
+%%
+
+int yywrap(void) {
+    return 1;
+}
+
+int main() {
+    printf("enter email: ");
+    yylex();
+    return 0;
+}

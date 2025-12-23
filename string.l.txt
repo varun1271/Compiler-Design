@@ -1,0 +1,18 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+[A-Z]+    { printf("%s", yytext); }
+.         { /* ignore other characters */ }
+%%
+
+int yywrap(void) {
+    return 1;
+}
+
+int main() {
+    printf("Enter string:\n");
+    yylex();
+    return 0;
+}

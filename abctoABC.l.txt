@@ -1,0 +1,17 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+abc        { printf("ABC"); }       /* convert substring abc → ABC */
+.          { printf("%s", yytext); } /* print all other characters unchanged */
+%%
+
+int yywrap(void) { return 1; }
+
+int main() {
+    printf("\nEnter the string: ");
+    yylex();
+    printf("\n");
+    return 0;
+}

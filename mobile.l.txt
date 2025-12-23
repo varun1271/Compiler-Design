@@ -1,0 +1,19 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+[6-9][0-9]{9}    { printf("mobile number valid\n"); }
+[0-9]+           { printf("invalid mobile number\n"); }
+.|\n             { /* ignore other input */ }
+%%
+
+int yywrap(void) {
+    return 1;
+}
+
+int main() {
+    printf("enter mobile number: ");
+    yylex();
+    return 0;
+}
